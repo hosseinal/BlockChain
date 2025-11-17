@@ -3,7 +3,6 @@ package core
 import (
 	"encoding/binary"
 	"io"
-	"time"
 
 	"github.com/hosseinal/BlockChain/types"
 )
@@ -11,7 +10,7 @@ import (
 type Header struct {
 	Version   uint32
 	PrevBlock types.Hash
-	Timestamp time.Time
+	Timestamp int64
 	Heght     uint64
 	Nonce     uint64
 }
@@ -62,7 +61,7 @@ func (h *Header) DecodeBinary(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	h.Timestamp = time.Unix(ts, 0)
+	h.Timestamp = ts
 
 	err = binary.Read(r, binary.LittleEndian, &h.Heght)
 	if err != nil {
