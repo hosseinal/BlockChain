@@ -3,7 +3,7 @@ package main
 import (
 	"time"
 
-	network "github.com/hosseinal/BlockChain/Network"
+	network "github.com/hosseinal/BlockChain/network"
 )
 
 func main() {
