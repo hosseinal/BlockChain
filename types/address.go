@@ -1,5 +1,7 @@
 package types
 
+import "encoding/hex"
+
 type Address [20]byte
 
 func (a Address) IsZero() bool {
@@ -15,6 +17,10 @@ func (a Address) ToSlice() []byte {
 	b := make([]byte, 20)
 	copy(b, a[:])
 	return b
+}
+
+func (a Address) String() string {
+	return hex.EncodeToString(a.ToSlice())
 }
 
 func AddressFromBytes(data []byte) Address {
